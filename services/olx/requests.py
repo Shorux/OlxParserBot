@@ -25,6 +25,7 @@ async def get_data(url: str) -> dict | None:
         data = {
             'title': raw_data.get('name'),
             'price': f'{raw_data.get('offers').get("price")}$',
+            # 'region': await DataParse.get_region(soup),
             'characs': await DataParse.get_parsed_characs(soup, raw_data.get('category')),
             'numbers': await DataParse.get_numbers(raw_data.get('sku')),
             'photos_urls': await DataParse.get_photos_urls(soup)

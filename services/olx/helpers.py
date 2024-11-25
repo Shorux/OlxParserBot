@@ -33,6 +33,15 @@ class DataParse:
         return photos_urls
 
     @staticmethod
+    async def get_region(soup: BS):
+        div = soup.find('div', class_='css-6u8zs6').find('section', class_='css-wefbef')
+        print(div.prettify())
+        region = div.find('span', class_='css-1c0ed4l')
+        if region:
+            return region.text.strip()
+        return ''
+
+    @staticmethod
     async def get_parsed_characs(soup: BS, category):
         characs = soup.find('ul', class_='css-rn93um').find_all('p', class_='css-b5m1rv')
         data = {}
