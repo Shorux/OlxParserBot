@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="135bf5a1-4e2d-4adc-a374-a1c0951325e8" name="Changes" comment="initialization">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/olx/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/olx/helpers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/olx/requests.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/olx/requests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/extends.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/extends.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
