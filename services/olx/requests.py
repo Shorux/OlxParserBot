@@ -18,21 +18,21 @@ async def get_html(url: str) -> str:
 async def get_data(url: str) -> dict | None:
     soup = BS(await get_html(url), 'html.parser')
 
-    try:
-        script_tag = soup.find("script", {"type": "application/ld+json"})
-        raw_data = json.loads(script_tag.string.strip())
+    # try:
+    script_tag = soup.find("script", {"type": "application/ld+json"})
+    raw_data = json.loads(script_tag.string.strip())
 
-        data = {
-            'title': raw_data.get('name'),
-            'price': f'{raw_data.get("offers").get("price")}$',
-            # 'region': await DataParse.get_region(soup),
-            'characs': await DataParse.get_parsed_characs(soup, raw_data.get('category')),
-            'numbers': await DataParse.get_numbers(raw_data.get('sku')),
-            'photos_urls': await DataParse.get_photos_urls(soup)
-        }
-    except Exception as e:
-        print(e)
-        return None
+    data = {
+        'title': raw_data.get('name'),
+        'price': f'{raw_data.get("offers").get("price")}$',
+        # 'region': await DataParse.get_region(soup),
+        'characs': await DataParse.get_parsed_characs(soup, raw_data.get('category')),
+        'numbers': await DataParse.get_numbers(raw_data.get('sku')),
+        'photos_urls': await DataParse.get_photos_urls(soup)
+    }
+    # except Exception as e:
+    #     print(e)
+    #     return None
 
     return data
 
