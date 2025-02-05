@@ -14,7 +14,11 @@ async def start_handler(message: Message):
 
 @user_rt.message(F.text.startswith('https://www.olx'))
 async def start_handler(message: Message):
-    media = await get_parsed_data(message.text.replace('oz/', ''))
+    try:
+        media = await get_parsed_data(message.text.replace('oz/', ''))
+    except:
+        await message.answer(_.wrong_url)
+        raise AssertionError(message.text)
 
     if media:
         await message.answer_media_group(media[:10])
