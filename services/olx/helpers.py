@@ -43,7 +43,7 @@ class DataParse:
 
     @staticmethod
     async def get_parsed_characs(soup: BS, category):
-        characs = soup.find('div', class_='css-1g2c38u')
+        characs = soup.find('div', class_='css-6zsv65')
         data = {}
         for charac in characs:
             charac = charac.text.strip()
@@ -71,3 +71,4 @@ class DataParse:
                 house_floors=data.get('house_floors', ''),
                 meters=data.get('meters', '')
             )
+        return None
