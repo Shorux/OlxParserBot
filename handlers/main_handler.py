@@ -16,9 +16,9 @@ async def start_handler(message: Message):
 async def start_handler(message: Message):
     try:
         media = await get_parsed_data(message.text.replace('oz/', ''))
-    except:
+    except Exception as e:
         await message.answer(_.wrong_url)
-        raise AssertionError(message.text)
+        raise e
 
     if media:
         await message.answer_media_group(media[:10])

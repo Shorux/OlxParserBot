@@ -31,8 +31,7 @@ async def get_data(url: str) -> dict | None:
             'photos_urls': await DataParse.get_photos_urls(soup)
     }
     except Exception as e:
-        print(e)
-        return None
+        raise e
 
     return data
 
