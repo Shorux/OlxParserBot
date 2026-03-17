@@ -43,21 +43,25 @@ class DataParse:
 
     @staticmethod
     async def get_parsed_characs(soup: BS, category):
-        characs = soup.find('div', class_='css-1cz2bo3')
+        characs_container = soup.find('div', class_='css-1xsisw9')
         data = {}
-        
+
+        if not characs_container:
+            return ''
+
+        characs = characs_container.find_all('p', class_='css-odhutu')
         for charac in characs:
-            charac = charac.text.strip()
-            if charac.startswith('Количество комнат'):
-                data['rooms'] = charac.split(': ')[1]
-            elif charac.startswith('Площадь участка'):
-                data['meters'] = charac.split(': ')[1]
-            elif charac.startswith('Общая площадь'):
-                data['meters'] = charac.split(': ')[1].replace(' м²', '')
-            elif charac.startswith('Этажность дома'):
-                data['house_floors'] = charac.split(': ')[1]
-            elif charac.startswith('Этаж'):
-                data['floor'] = charac.split(': ')[1]
+            text = charac.text.strip()
+            if text.startswith('Количество комнат'):
+                data['rooms'] = text.split(': ')[1]
+            elif text.startswith('Площадь участка'):
+                data['meters'] = text.split(': ')[1]
+            elif text.startswith('Общая площадь'):
+                data['meters'] = text.split(': ')[1].replace(' м²', '')
+            elif text.startswith('Этажность дома'):
+                data['house_floors'] = text.split(': ')[1]
+            elif text.startswith('Этаж'):
+                data['floor'] = text.split(': ')[1]
 
         if 'kvartiry' in category:
             return _.apartment_characs.format(

@@ -5,8 +5,6 @@ import asyncio
 from config import BOT_TOKEN, DEBUG
 from dispatcher import bot, dp
 
-# from data.models import init_db
-# from tests.db_tests import start_test
 from handlers.main_handler import user_rt
 
 
@@ -26,8 +24,6 @@ def start_logging():
 
 async def main():
     dp.include_router(user_rt)
-    # await start_test()
-    # await init_db()
     await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
 
 
