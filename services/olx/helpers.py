@@ -43,13 +43,13 @@ class DataParse:
 
     @staticmethod
     async def get_parsed_characs(soup: BS, category):
-        characs_container = soup.find('div', class_='css-1xsisw9')
+        characs_container = soup.find('div', {'data-testid': 'ad-parameters-container'})
         data = {}
 
         if not characs_container:
             return ''
 
-        characs = characs_container.find_all('p', class_='css-odhutu')
+        characs = characs_container.find_all('p')
         for charac in characs:
             text = charac.text.strip()
             if text.startswith('Количество комнат'):

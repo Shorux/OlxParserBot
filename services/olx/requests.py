@@ -51,7 +51,7 @@ async def get_parsed_data(url: str) -> list | None:
 
 
 async def main():
-    url = 'https://www.olx.uz/d/obyavlenie/4-xonalik-kvartita-ID3ROSf.html'
+    url = 'https://www.olx.uz/d/obyavlenie/tsentr-2-komnatnaya-2-etazh-kunaeva-spets-plan-gostinitsa-rossiya-ID4jj3s.html'
     parsed_data = await get_parsed_data(url)
     print(parsed_data)
 
